@@ -1,0 +1,83 @@
+{
+  "templates": [
+    {
+      "name": "georgia-power-homepage",
+      "urls": [
+        "https://www.georgiapower.com/"
+      ],
+      "description": "Georgia Power homepage with hero, promotions, quick links, content cards, marketplace, and resources",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".hero-container .adaptive-hero-carousel"]
+        },
+        {
+          "name": "columns",
+          "instances": [".header-promos", ".marketplace-promo .cta-row-sm", "#SOCO-ContentCard953320fc-b005-49ed-a308-052fcdbcb7c1"]
+        },
+        {
+          "name": "cards",
+          "instances": ["#responsive-nav-bar .nav-bar", ".marketplace-promo .marketplace-items"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Banner",
+          "selector": ".hero-container",
+          "style": null,
+          "blocks": ["hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Promo Banner Strip",
+          "selector": ".header-promos",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Quick Links Bar",
+          "selector": "#responsive-nav-bar",
+          "style": null,
+          "blocks": ["cards"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Rain or Shine Content",
+          "selector": "#SOCO-ContentCardb44d664f-8446-486d-9e23-78a716b47adc",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [".content-card__title", ".content-card--content p", ".content-card--content a"]
+        },
+        {
+          "id": "section-5",
+          "name": "Marketplace Products",
+          "selector": ".marketplace-promo",
+          "style": null,
+          "blocks": ["columns", "cards"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Tips Section",
+          "selector": "#SOCO-ContentCardd46c286a-26fe-4919-be60-ab261f60a257",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": ["h2", "p"]
+        },
+        {
+          "id": "section-7",
+          "name": "Featured Resources",
+          "selector": "#SOCO-ContentCard953320fc-b005-49ed-a308-052fcdbcb7c1",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": ["h2"]
+        }
+      ]
+    }
+  ]
+}

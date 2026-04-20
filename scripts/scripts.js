@@ -22,6 +22,10 @@ export function getContentRoot() {
   // Find the deepest path segment before the page name that contains content pages
   // e.g. /content/wknd/about → /content/wknd, /about → /
   const segments = pathname.split('/').filter(Boolean);
+  // Handle directory-index URLs like /content/ (trailing slash, no page segment)
+  if (pathname.endsWith('/') && segments.length >= 1) {
+    return `/${segments.join('/')}`;
+  }
   // The last segment is the page itself; everything before it is the content root
   if (segments.length > 1) {
     // Check if content is nested (e.g. /content/adventures or /content/blog/post)

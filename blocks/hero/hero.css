@@ -138,42 +138,41 @@ main .hero a.button:any-link {
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 3px 3px 0 0 var(--btn-shadow, var(--dark-color));
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background-position 0.2s ease;
 }
 
 main .hero a.button:any-link:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 0 var(--btn-shadow, var(--dark-color));
   text-decoration: none;
 }
 
 main .hero a.button:any-link:active {
-  transform: translateY(0);
   box-shadow: 0 0 0 var(--btn-shadow, var(--dark-color));
 }
 
-/* primary button on hero — accent bg, dark text */
+/* primary button on hero — accent bg shimmer */
 main .hero a.button.primary:any-link {
-  background: var(--accent-color);
+  background: linear-gradient(
+    110deg,
+    var(--accent-color) 0%,
+    var(--accent-color) 35%,
+    var(--neon-shimmer) 50%,
+    var(--accent-color) 65%,
+    var(--accent-color) 100%
+  );
+  background-size: 200% 100%;
   border: 2px solid var(--accent-color);
   color: var(--dark-color);
 }
 
-main .hero a.button.primary:any-link:hover {
-  filter: brightness(0.9);
-}
-
-/* secondary button on hero — white outline, dark shadow */
+/* secondary button on hero — inherits global neon border cycle */
 main .hero a.button.secondary:any-link {
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 50%);
   color: var(--background-color);
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+  background-color: rgb(255 255 255 / 10%);
+  color: var(--background-color);
 }
 
 @media (width < 768px) {

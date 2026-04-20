@@ -67,6 +67,12 @@
   --link-color: #e8651a;
   --link-hover-color: #c9530e;
 
+  /* vegas neon palette */
+  --neon-pink: #ff1493;
+  --neon-cyan: #0ff;
+  --neon-gold: #ffe14d;
+  --neon-shimmer: #fc0;
+
   /* transitions */
   --transition-fast: 0.15s;
   --transition-normal: 0.3s ease;
@@ -390,34 +396,53 @@ a.button:any-link {
 }
 
 a.button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 0 var(--btn-shadow, var(--accent-color));
+  transform: translate(-2px, -2px) scale(1.05);
   text-decoration: none;
 }
 
 a.button:active {
-  transform: translate(0, 0);
+  transform: translateY(0) scale(0.98);
   box-shadow: 0 0 0 0 var(--btn-shadow, var(--accent-color));
 }
 
 
-/* Primary: dark bg, white text */
+/* Primary: dark bg, white text, neon glow + shimmer */
 a.button.primary {
   border-color: var(--dark-color);
-  background-color: var(--dark-color);
   color: var(--background-color);
+  background: linear-gradient(
+    110deg,
+    var(--dark-color) 0%,
+    var(--dark-color) 35%,
+    var(--neon-shimmer) 50%,
+    var(--dark-color) 65%,
+    var(--dark-color) 100%
+  );
+  background-size: 200% 100%;
+  animation: vegas-glow 2s ease-in-out infinite, vegas-shimmer 3s linear infinite;
 }
 
-/* Secondary/Ghost: transparent bg, border matches context */
+a.button.primary:hover {
+  filter: brightness(1.15);
+  box-shadow:
+    0 0 20px var(--accent-color),
+    0 0 50px var(--accent-color),
+    0 0 80px rgb(232 101 26 / 50%),
+    5px 5px 0 0 var(--btn-shadow, var(--accent-color));
+}
+
+/* Secondary/Ghost: transparent bg, cycling neon border */
 a.button.secondary {
-  border-color: var(--dark-color);
+  border-color: var(--neon-pink);
   background-color: transparent;
   color: var(--dark-color);
+  animation: vegas-border-cycle 3s linear infinite;
 }
 
 a.button.secondary:hover {
   background-color: var(--dark-color);
   color: var(--background-color);
+  box-shadow: 0 0 20px var(--neon-cyan), 0 0 50px rgb(0 255 255 / 40%);
 }
 
 /* Accent: orange bg, dark text (hero) */
@@ -503,24 +528,30 @@ main > .section.dark a:any-link:not(.button) {
   color: var(--accent-color);
 }
 
-/* dark section: primary button inverts to white fill + amber shadow */
+/* dark section: primary button inverts to white fill + gold shimmer */
 main > .section.dark a.button.primary {
   border-color: var(--background-color);
-  background-color: var(--background-color);
   color: var(--dark-color);
+  background: linear-gradient(
+    110deg,
+    var(--background-color) 0%,
+    var(--background-color) 35%,
+    var(--neon-shimmer) 50%,
+    var(--background-color) 65%,
+    var(--background-color) 100%
+  );
+  background-size: 200% 100%;
 }
 
-/* dark section: ghost button uses white outline */
+/* dark section: ghost button inherits neon border cycle */
 main > .section.dark a.button.secondary {
-  border-color: rgb(255 255 255 / 50%);
   background-color: transparent;
   color: var(--background-color);
 }
 
 main > .section.dark a.button.secondary:hover {
-  background-color: var(--background-color);
-  border-color: var(--background-color);
-  color: var(--dark-color);
+  background-color: rgb(255 255 255 / 10%);
+  color: var(--background-color);
 }
 
 /* dark section: focus ring uses white */
@@ -553,11 +584,19 @@ main > .section.accent > div > p:not(.tag-pill) {
   font-size: 20px;
 }
 
-/* accent section: primary button uses black fill + white shadow */
+/* accent section: primary button uses black fill + gold shimmer */
 main > .section.accent a.button.primary {
   border-color: var(--dark-color);
-  background-color: var(--dark-color);
   color: var(--background-color);
+  background: linear-gradient(
+    110deg,
+    var(--dark-color) 0%,
+    var(--dark-color) 35%,
+    var(--neon-shimmer) 50%,
+    var(--dark-color) 65%,
+    var(--dark-color) 100%
+  );
+  background-size: 200% 100%;
 }
 
 main > .section.accent a.button.secondary {
@@ -632,6 +671,52 @@ main .section.dark.narrow h2 {
 
 main .default-content-wrapper .button-group p.button-wrapper {
   margin: 0;
+}
+
+/* --- VEGAS NEON ANIMATIONS --- */
+
+@keyframes vegas-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 8px var(--accent-color),
+      0 0 20px var(--accent-color),
+      3px 3px 0 0 var(--btn-shadow, var(--accent-color));
+  }
+
+  50% {
+    box-shadow:
+      0 0 16px var(--accent-color),
+      0 0 40px var(--accent-color),
+      0 0 60px rgb(232 101 26 / 40%),
+      3px 3px 0 0 var(--btn-shadow, var(--accent-color));
+  }
+}
+
+@keyframes vegas-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes vegas-border-cycle {
+  0% {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 25px rgb(255 20 147 / 30%);
+  }
+
+  33% {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan), 0 0 25px rgb(0 255 255 / 30%);
+  }
+
+  66% {
+    border-color: var(--neon-gold);
+    box-shadow: 0 0 10px var(--neon-gold), 0 0 25px rgb(255 225 77 / 30%);
+  }
+
+  100% {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 25px rgb(255 20 147 / 30%);
+  }
 }
 
 /* --- REDUCED MOTION — ACCESSIBILITY --- */

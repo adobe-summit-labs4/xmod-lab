@@ -5,6 +5,14 @@
 /* Shared: full-bleed container — no section padding on hero */
 main > .hero-container {
   padding: 0;
+  background-color: var(--background-color);
+  color: #000;
+}
+
+/* Override dark section styles for split-layout hero */
+main > .section.dark.hero-container {
+  background-color: var(--background-color);
+  color: #000;
 }
 
 .hero-container .hero-wrapper {
@@ -12,94 +20,83 @@ main > .hero-container {
   padding: 0;
 }
 
-/* ===== Base hero (full-bleed overlay with gradient) ===== */
+/* ===== Base hero (50/50 split: image left, text right) ===== */
 
-/* Set hero button shadow color — black on hero (over image) */
 .hero {
   --btn-shadow: var(--dark-color);
 
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
   min-height: min(65vh, 400px);
-  padding: var(--gap-2xl) var(--gap-lg);
   overflow: hidden;
-  color: var(--text-on-dark);
+  color: var(--text-color);
 }
 
-.hero picture {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero::after {
+  display: none;
 }
 
-.hero img {
+.hero .hero-image-col {
+  flex: 0 0 50%;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.hero .hero-image-col picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-image-col img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-/* overlay gradient — bottom-to-top for text readability */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(0deg, rgb(0 0 0 / 75%) 0%, rgb(0 0 0 / 45%) 40%, rgb(0 0 0 / 25%));
-  pointer-events: none;
+.hero .hero-content-col {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--gap-2xl) var(--gap-lg);
 }
 
-.hero > div {
-  position: relative;
-  z-index: 2;
-  max-width: var(--container-max-width);
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.hero h1,
-.hero h2,
-.hero h3,
-.hero h4,
-.hero h5,
-.hero h6 {
-  color: var(--background-color);
+main > .section .hero .hero-content-col h1,
+main > .section .hero .hero-content-col h2,
+main > .section .hero .hero-content-col h3,
+main > .section .hero .hero-content-col h4,
+main > .section .hero .hero-content-col h5,
+main > .section .hero .hero-content-col h6 {
+  color: #000;
   margin-bottom: var(--gap-lg);
-  text-shadow: 0 1px 3px rgb(0 0 0 / 35%);
+  text-shadow: none;
 }
 
-.hero h1 {
+.hero .hero-content-col h1 {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  max-width: 608px;
 }
 
-.hero p:not(.tag-pill) {
-  color: var(--text-on-dark);
+main > .section .hero .hero-content-col p:not(.tag-pill) {
+  color: #000;
   font-size: var(--body-font-size-m);
   line-height: 1.6;
-  max-width: 608px;
-  text-shadow: 0 1px 3px rgb(0 0 0 / 35%);
+  text-shadow: none;
 }
 
 /* eyebrow pill — uses .tag-pill utility, adds hero-specific overrides */
 .hero .tag-pill {
   margin-bottom: var(--gap-md);
-  text-shadow: none;
 }
 
 /* lead paragraph — after h1 */
-.hero > div > h1 + p {
+main > .section .hero .hero-content-col > h1 + p {
   font-size: 20px;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--text-on-dark);
-  max-width: 608px;
+  color: #000;
   margin-bottom: var(--gap-lg);
 }
 
@@ -163,15 +160,15 @@ main .hero a.button.primary:any-link:hover {
   filter: brightness(0.9);
 }
 
-/* secondary button on hero — white outline, dark shadow */
+/* secondary button on hero — outline style */
 main .hero a.button.secondary:any-link {
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 50%);
-  color: var(--background-color);
+  border: 2px solid var(--dark-color);
+  color: var(--dark-color);
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
+  border-color: var(--accent-color);
   background-color: var(--accent-color);
   color: var(--dark-color);
 }
@@ -195,7 +192,15 @@ main .hero a.button.secondary:any-link:hover {
 
 @media (width >= 768px) {
   .hero {
+    flex-direction: row;
     min-height: 65vh;
+  }
+
+  .hero .hero-image-col {
+    min-height: unset;
+  }
+
+  .hero .hero-content-col {
     padding: var(--gap-3xl) var(--gap-xl);
   }
 

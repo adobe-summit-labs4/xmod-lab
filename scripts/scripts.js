@@ -393,6 +393,20 @@ async function loadLazy(doc) {
   // Post-load decorations
   decorateTabSections(main);
 
+  // Scroll-triggered flow-up animation for all sections (except hero)
+  main.querySelectorAll(':scope > .section:not(.hero-container), :scope > .tabs-container').forEach((section) => {
+    section.classList.add('scroll-animate');
+  });
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('scroll-visible');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  main.querySelectorAll('.scroll-animate').forEach((el) => scrollObserver.observe(el));
+
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();

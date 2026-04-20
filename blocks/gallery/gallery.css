@@ -109,6 +109,30 @@ main .gallery-container > .default-content-wrapper a.button:hover {
   opacity: 0.65;
 }
 
+/* --- Captions --- */
+.gallery .gallery-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery .gallery-figure picture {
+  border-radius: var(--gallery-radius) var(--gallery-radius) 0 0;
+}
+
+.gallery .gallery-figure img {
+  border-radius: var(--gallery-radius) var(--gallery-radius) 0 0;
+}
+
+.gallery .gallery-caption {
+  padding: var(--gap-sm) var(--gap-md);
+  background: rgb(255 255 255 / 10%);
+  border-radius: 0 0 var(--gallery-radius) var(--gallery-radius);
+  color: var(--text-on-dark, #fff);
+  font-size: var(--body-font-size-s);
+  line-height: 1.4;
+}
+
 /* --- Responsive --- */
 @media (width >= 768px) {
   .gallery > div {

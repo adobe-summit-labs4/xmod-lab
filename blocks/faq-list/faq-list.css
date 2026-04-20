@@ -107,17 +107,17 @@
   background: none;
 }
 
-/* --- FAQ item (details element) — rounded pill with hover accent --- */
+/* --- FAQ item (details element) — rounded pill with accent border --- */
 .faq-list details {
-  border: 1px solid var(--faq-border-color);
+  border: 1px solid var(--faq-accent-color);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: var(--gap-xs);
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .faq-list details:hover {
-  border-color: var(--faq-accent-color);
+  border-color: var(--dark-color);
 }
 
 .faq-list details p {
@@ -128,7 +128,7 @@
   margin: 0;
 }
 
-/* --- Question (summary) — flex layout with plus icon --- */
+/* --- Question (summary) — cream bg with accent hover --- */
 .faq-list details summary {
   position: relative;
   display: flex;
@@ -144,22 +144,42 @@
   letter-spacing: normal;
   line-height: 1.6;
   color: var(--dark-color);
-  transition: background-color 0.15s ease;
+  background-color: var(--cream-color, #f5f0e8);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .faq-list details summary::-webkit-details-marker {
   display: none;
 }
 
-/* Hover: warm background on question row */
+/* Hover: accent orange background on question row */
 .faq-list details summary:hover {
-  background-color: var(--faq-hover-bg);
+  background-color: var(--faq-accent-color);
 }
 
-/* Open state: keep hover background on summary */
+/* Hover: plus icon turns white */
+.faq-list details summary:hover::after {
+  color: #fff;
+}
+
+/* Open state: cream background on whole card, summary transparent */
+.faq-list details[open] {
+  background-color: var(--cream-color, #f5f0e8);
+}
+
 .faq-list details[open] summary {
-  background-color: var(--faq-hover-bg);
+  background-color: transparent;
   border-radius: 15px 15px 0 0;
+}
+
+/* Open + hover: accent summary bg */
+.faq-list details[open] summary:hover {
+  background-color: var(--faq-accent-color);
+}
+
+/* Open + hover: plus icon turns cream */
+.faq-list details[open] summary:hover::after {
+  color: var(--cream-color, #f5f0e8);
 }
 
 /* Plus icon → rotates 45° to × when open */
@@ -170,7 +190,7 @@
   color: var(--faq-accent-color);
   margin-left: var(--gap-md, 16px);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.15s ease;
 }
 
 .faq-list details[open] summary::after {
@@ -191,6 +211,6 @@
 }
 
 .faq-list details[open] .faq-list-item-body {
-  border-top: 1px solid var(--faq-border-color);
-  background-color: var(--background-color);
+  padding-top: var(--gap-md);
+  background-color: transparent;
 }

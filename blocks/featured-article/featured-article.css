@@ -2,6 +2,16 @@
 
 /* Featured Article block — image + content side-by-side layout */
 
+/* Desaturated by default, colors animate back on hover */
+.featured-article-container .featured-article {
+  filter: grayscale(100%);
+  transition: filter 0.6s ease;
+}
+
+.featured-article-container:hover .featured-article {
+  filter: grayscale(0%);
+}
+
 .featured-article > div {
   display: flex;
   flex-direction: column;

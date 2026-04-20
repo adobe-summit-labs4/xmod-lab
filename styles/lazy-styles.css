@@ -131,6 +131,26 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+/* Hero split layout children */
+.scroll-animate > .hero-wrapper > .hero > .hero-image-col,
+.scroll-animate > .hero-wrapper > .hero > .hero-content-col {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-animate.scroll-visible > .hero-wrapper > .hero > .hero-image-col {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2s;
+}
+
+.scroll-animate.scroll-visible > .hero-wrapper > .hero > .hero-content-col {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 2.005s;
+}
+
 /* Block wrappers: cards, featured-article, gallery, editorial-index, faq, ticker, etc. */
 .scroll-animate > [class$="-wrapper"] > [class]:not([class$="-wrapper"]) {
   opacity: 0;
@@ -203,6 +223,8 @@
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+  .scroll-animate > .hero-wrapper > .hero > .hero-image-col,
+  .scroll-animate > .hero-wrapper > .hero > .hero-content-col,
   .scroll-animate > .default-content-wrapper > *,
   .scroll-animate > [class$="-wrapper"] > [class]:not([class$="-wrapper"]),
   .scroll-animate.tabs-container > .default-content-wrapper,

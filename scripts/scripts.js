@@ -393,8 +393,8 @@ async function loadLazy(doc) {
   // Post-load decorations
   decorateTabSections(main);
 
-  // Scroll-triggered flow-up animation for all sections (except hero)
-  main.querySelectorAll(':scope > .section:not(.hero-container), :scope > .tabs-container').forEach((section) => {
+  // Scroll-triggered flow-up animation for all sections
+  main.querySelectorAll(':scope > .section, :scope > .tabs-container').forEach((section) => {
     section.classList.add('scroll-animate');
   });
   const scrollObserver = new IntersectionObserver((entries) => {

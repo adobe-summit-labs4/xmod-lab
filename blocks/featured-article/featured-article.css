@@ -1,5 +1,18 @@
 /* stylelint-disable no-descending-specificity */
 
+/* slide-in animation for image column */
+@keyframes slide-in-from-left {
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Featured Article block — image + content side-by-side layout */
 
 .featured-article > div {
@@ -21,6 +34,7 @@
   overflow: hidden;
   border-radius: var(--card-border-radius);
   max-height: 30rem;
+  animation: slide-in-from-left 0.8s ease-out both;
 }
 
 .featured-article .featured-article-img-col p {

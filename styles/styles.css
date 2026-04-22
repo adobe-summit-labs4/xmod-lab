@@ -6,22 +6,22 @@
  */
 
 :root {
-  /* colors */
+  /* colors — Navy Federal palette */
   --background-color: #fff;
-  --text-color: #0f1a14;
-  --text-color-muted: #7a8a80;
-  --text-color-subtle: #3d4f45;
-  --accent-color: #e8651a;
-  --light-color: #f0ece4;
-  --dark-color: #0f1a14;
-  --cream-color: #f5f0e8;
-  --forest-color: #1a3a2e;
-  --border-color: #c8c2b8;
-  --border-color-light: #ddd8cf;
+  --text-color: #0c0d0e;
+  --text-color-muted: #5a6872;
+  --text-color-subtle: #3a4750;
+  --accent-color: #ed780f;
+  --light-color: #dce8f5;
+  --dark-color: #0f3d70;
+  --cream-color: #f0f5fb;
+  --forest-color: #0a2d52;
+  --border-color: #c5d3e0;
+  --border-color-light: #dce8f5;
 
-  /* fonts */
-  --body-font-family: 'Instrument Sans', instrument-sans-fallback, sans-serif;
-  --heading-font-family: syncopate, syncopate-fallback, sans-serif;
+  /* fonts — Source Sans Pro */
+  --body-font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --heading-font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
 
   /* body sizes (mobile-first) */
   --body-font-size-m: 16px;
@@ -52,20 +52,20 @@
   /* nav height */
   --nav-height: 64px;
 
-  /* buttons */
-  --button-font-family: syncopate, syncopate-fallback, sans-serif;
-  --button-font-size: 14px;
-  --button-font-weight: 700;
-  --button-letter-spacing: 0.98px;
-  --button-border-radius: 9999px;
-  --button-padding: 13px 32px 11px;
-  --button-transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s,
+  /* buttons — NF style: rounded rect, no pill, no shadow */
+  --button-font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --button-font-size: 16px;
+  --button-font-weight: 600;
+  --button-letter-spacing: normal;
+  --button-border-radius: 6px;
+  --button-padding: 13px 24px;
+  --button-transition: background-color 0.2s, box-shadow 0.2s, transform 0.15s,
     color 0.15s, border-color 0.15s;
-  --btn-shadow: var(--accent-color);
+  --btn-shadow: none;
 
-  /* links */
-  --link-color: #e8651a;
-  --link-hover-color: #c9530e;
+  /* links — NF blue */
+  --link-color: #0667ba;
+  --link-hover-color: #044d8c;
 
   /* transitions */
   --transition-fast: 0.15s;
@@ -73,48 +73,48 @@
 
   /* border radii */
   --border-radius-sm: 8px;
-  --card-border-radius: 20px;
+  --card-border-radius: 12px;
 
   /* card shared patterns */
-  --card-hover-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+  --card-hover-shadow: 0 4px 20px rgb(0 0 0 / 10%);
   --card-hover-transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
 
-  /* tag pill shared patterns — asymmetric padding optically centers uppercase text */
-  --tag-padding: 5px 8px 3px;
-  --tag-font-size: 10.4px;
-  --tag-letter-spacing: 0.52px;
+  /* tag pill shared patterns */
+  --tag-padding: 6px 12px;
+  --tag-font-size: 12px;
+  --tag-letter-spacing: normal;
 
-  /* text link (Syncopate underlined link pattern) */
-  --text-link-letter-spacing: 0.84px;
+  /* text link */
+  --text-link-letter-spacing: normal;
   --text-link-underline-offset: 3px;
 
   /* brand */
   --logo-icon-size: 32px;
-  --brand-letter-spacing: 0.6px;
+  --brand-letter-spacing: normal;
 
   /* footer */
-  --footer-link-color: #999;
+  --footer-link-color: #8a9bab;
 
   /* dark section / overlay text */
-  --text-on-dark: rgb(255 255 255 / 85%);
-  --text-on-dark-muted: rgb(255 255 255 / 55%);
+  --text-on-dark: rgb(255 255 255 / 90%);
+  --text-on-dark-muted: rgb(255 255 255 / 60%);
 
   /* glass card (dark section) */
-  --glass-bg: rgb(255 255 255 / 6%);
-  --glass-border: rgb(255 255 255 / 12%);
+  --glass-bg: rgb(255 255 255 / 8%);
+  --glass-border: rgb(255 255 255 / 15%);
 }
 
-/* fallback fonts */
+/* fallback fonts — Source Sans Pro */
 @font-face {
   font-family: instrument-sans-fallback;
-  size-adjust: 91%;
+  size-adjust: 100%;
   src: local('Arial');
 }
 
 @font-face {
   font-family: syncopate-fallback;
-  size-adjust: 138%;
-  src: local('Arial Black'), local('Arial');
+  size-adjust: 100%;
+  src: local('Arial');
 }
 
 /* desktop — content reflow breakpoint */
@@ -180,9 +180,10 @@ h6 {
   margin-bottom: var(--gap-xs);
   font-family: var(--heading-font-family);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   scroll-margin: 40px;
-  letter-spacing: -0.02em;
+  letter-spacing: normal;
+  color: var(--dark-color);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -265,9 +266,9 @@ pre {
   white-space: pre;
 }
 
-/* blockquote — amber left border, italic */
+/* blockquote — NF orange left border, italic */
 blockquote {
-  border-left: 4px solid var(--accent-color);
+  border-left: 5px solid var(--accent-color);
   margin: var(--gap-lg) 0;
   padding: var(--gap-md) var(--gap-lg);
   font-style: italic;
@@ -314,18 +315,18 @@ main img {
   width: 100%;
 }
 
-/* --- TAG PILL: shared eyebrow / category label --- */
+/* --- TAG PILL: shared eyebrow / category label — NF style --- */
 
 .tag-pill {
   display: inline-block;
   font-family: var(--heading-font-family);
   font-size: var(--tag-font-size);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: var(--tag-letter-spacing);
-  background-color: var(--accent-color);
-  color: var(--background-color);
+  background-color: var(--dark-color);
+  color: #fff;
   padding: var(--tag-padding);
-  border-radius: var(--button-border-radius);
+  border-radius: 4px;
 }
 
 /* --- LINKS --- */
@@ -364,7 +365,7 @@ p.button-wrapper {
   margin: 0;
 }
 
-/* Decorated buttons (via p.button-wrapper > a.button) */
+/* Decorated buttons — NF clean style: no retro shadow */
 a.button:any-link {
   box-sizing: border-box;
   display: inline-flex;
@@ -372,7 +373,7 @@ a.button:any-link {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
+  border: none;
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
   font-family: var(--button-font-family);
@@ -385,46 +386,46 @@ a.button:any-link {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  box-shadow: 3px 3px 0 0 var(--btn-shadow, var(--accent-color));
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
   transition: var(--button-transition);
 }
 
 a.button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 0 var(--btn-shadow, var(--accent-color));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
   text-decoration: none;
 }
 
 a.button:active {
-  transform: translate(0, 0);
-  box-shadow: 0 0 0 0 var(--btn-shadow, var(--accent-color));
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
 }
 
 
-/* Primary: dark bg, white text */
+/* Primary: NF orange bg, white text */
 a.button.primary {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--background-color);
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
-/* Secondary/Ghost: transparent bg, border matches context */
+/* Secondary: navy outline, transparent bg */
 a.button.secondary {
-  border-color: var(--dark-color);
+  border: 2px solid var(--dark-color);
   background-color: transparent;
   color: var(--dark-color);
+  box-shadow: none;
 }
 
 a.button.secondary:hover {
   background-color: var(--dark-color);
-  color: var(--background-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
 }
 
-/* Accent: orange bg, dark text (hero) */
+/* Accent: navy bg, white text */
 a.button.accent {
-  border-color: var(--accent-color);
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+  background-color: var(--dark-color);
+  color: #fff;
 }
 
 
@@ -503,24 +504,24 @@ main > .section.dark a:any-link:not(.button) {
   color: var(--accent-color);
 }
 
-/* dark section: primary button inverts to white fill + amber shadow */
+/* dark section: primary button — NF orange */
 main > .section.dark a.button.primary {
-  border-color: var(--background-color);
-  background-color: var(--background-color);
-  color: var(--dark-color);
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
-/* dark section: ghost button uses white outline */
+/* dark section: secondary button — white outline */
 main > .section.dark a.button.secondary {
-  border-color: rgb(255 255 255 / 50%);
+  border: 2px solid rgb(255 255 255 / 50%);
   background-color: transparent;
-  color: var(--background-color);
+  color: #fff;
+  box-shadow: none;
 }
 
 main > .section.dark a.button.secondary:hover {
-  background-color: var(--background-color);
-  border-color: var(--background-color);
-  color: var(--dark-color);
+  border-color: #fff;
+  background-color: rgb(255 255 255 / 10%);
+  color: #fff;
 }
 
 /* dark section: focus ring uses white */
@@ -553,17 +554,17 @@ main > .section.accent > div > p:not(.tag-pill) {
   font-size: 20px;
 }
 
-/* accent section: primary button uses black fill + white shadow */
+/* accent section: primary button — navy fill */
 main > .section.accent a.button.primary {
-  border-color: var(--dark-color);
   background-color: var(--dark-color);
-  color: var(--background-color);
+  color: #fff;
 }
 
 main > .section.accent a.button.secondary {
-  border-color: var(--dark-color);
+  border: 2px solid var(--dark-color);
   color: var(--dark-color);
   background-color: transparent;
+  box-shadow: none;
 }
 
 /* Secondary: light bg (kept for backward compatibility) */

@@ -11,13 +11,13 @@
   --text-color: #0f1a14;
   --text-color-muted: #7a8a80;
   --text-color-subtle: #3d4f45;
-  --accent-color: #e8651a;
-  --light-color: #f0ece4;
+  --accent-color: #2e9e5a;
+  --light-color: #e8f5ec;
   --dark-color: #0f1a14;
-  --cream-color: #f5f0e8;
+  --cream-color: #edf7f0;
   --forest-color: #1a3a2e;
-  --border-color: #c8c2b8;
-  --border-color-light: #ddd8cf;
+  --border-color: #a8c8b0;
+  --border-color-light: #c8dece;
 
   /* fonts */
   --body-font-family: 'Instrument Sans', instrument-sans-fallback, sans-serif;
@@ -64,8 +64,8 @@
   --btn-shadow: var(--accent-color);
 
   /* links */
-  --link-color: #e8651a;
-  --link-hover-color: #c9530e;
+  --link-color: #2e9e5a;
+  --link-hover-color: #1f7a42;
 
   /* transitions */
   --transition-fast: 0.15s;

@@ -182,25 +182,20 @@ main .hero a.button:any-link:active {
   100% { background-position: 200% center; }
 }
 
-/* primary button on hero — neon glow pulse */
+/* primary button on hero — grey with orange hover */
 main .hero a.button.primary:any-link {
-  background: linear-gradient(135deg, #e8651a, #ff3c6f, #e8651a);
-  background-size: 100% 100%;
-  border: 2px solid #ff3c6f;
+  background: #6b7280;
+  border: 2px solid #6b7280;
   color: #fff;
-  text-shadow: 0 0 8px rgb(255 255 255 / 40%);
-  animation: hero-neon-pulse 2s ease-in-out infinite;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 main .hero a.button.primary:any-link:hover {
-  filter: brightness(1.15);
-  transform: translate(-2px, -2px) scale(1.05);
-  box-shadow:
-    5px 5px 0 0 var(--btn-shadow, var(--dark-color)),
-    0 0 24px #ff3c6f,
-    0 0 50px rgb(255 60 111 / 70%),
-    0 0 80px rgb(232 101 26 / 40%);
-  animation: none;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--btn-shadow, var(--dark-color));
 }
 
 /* secondary button on hero — shimmer border */

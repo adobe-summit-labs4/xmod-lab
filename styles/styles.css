@@ -571,6 +571,30 @@ main > .section.secondary {
   background-color: var(--light-color);
 }
 
+/* Vegas pinstripe — featured article section */
+main > .section.secondary.featured-article-container {
+  background: repeating-linear-gradient(
+    90deg,
+    #0a0a2e 0px,
+    #0a0a2e 8px,
+    #000 8px,
+    #000 16px
+  );
+  color: #fff;
+}
+
+main > .section.secondary.featured-article-container h2 {
+  color: #fff;
+}
+
+main > .section.secondary.featured-article-container .featured-article-content p {
+  color: rgb(255 255 255 / 70%);
+}
+
+main > .section.secondary.featured-article-container .featured-article-content p:last-child {
+  border-top-color: rgb(255 255 255 / 20%);
+}
+
 /* Narrow: constrains content to narrow max-width */
 main .section.narrow > div {
   max-width: var(--container-narrow-max-width);

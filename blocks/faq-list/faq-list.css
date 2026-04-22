@@ -172,7 +172,7 @@
   color: var(--background-color);
 }
 
-/* Plus icon → × when open */
+/* Plus icon → rotates 45° to × when open */
 .faq-list details summary::after {
   content: "+";
   font-size: 20px;
@@ -185,7 +185,7 @@
 
 /* Open state: white × icon on accent background */
 .faq-list details[open] summary::after {
-  content: "\00d7";
+  transform: rotate(45deg);
   color: var(--background-color);
 }
 

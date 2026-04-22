@@ -40,11 +40,15 @@ main > .hero-container {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+/* Desaturate effect — base hero only (not article variant) */
+.hero:not(.article) img {
   filter: grayscale(100%);
   transition: filter 0.8s ease;
 }
 
-.hero:hover img {
+.hero:not(.article):hover img {
   filter: grayscale(0%);
 }
 

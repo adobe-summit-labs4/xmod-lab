@@ -152,28 +152,99 @@ main .hero a.button:any-link:active {
   box-shadow: 0 0 0 var(--btn-shadow, var(--dark-color));
 }
 
-/* primary button on hero — accent bg, dark text */
-main .hero a.button.primary:any-link {
-  background: var(--accent-color);
-  border: 2px solid var(--accent-color);
-  color: var(--dark-color);
+/* Vegas neon glow keyframes */
+@keyframes vegas-glow-primary {
+  0%, 100% { box-shadow: 0 0 8px #ff2d55, 0 0 20px #ff2d5580, 3px 3px 0 0 #ff2d55; }
+  50% { box-shadow: 0 0 16px #ffcc00, 0 0 40px #ffcc0080, 3px 3px 0 0 #ffcc00; }
 }
 
-main .hero a.button.primary:any-link:hover {
-  filter: brightness(0.9);
+@keyframes vegas-glow-secondary {
+  0%, 100% { box-shadow: 0 0 8px #00e5ff, 0 0 20px #00e5ff80, 3px 3px 0 0 #00e5ff; }
+  50% { box-shadow: 0 0 16px #ff2d55, 0 0 40px #ff2d5580, 3px 3px 0 0 #ff2d55; }
 }
 
-/* secondary button on hero — white outline, dark shadow */
-main .hero a.button.secondary:any-link {
+/* primary button on hero — Vegas hot pink/gold neon (decorated + raw markup) */
+main .hero a.button.primary:any-link,
+.hero strong > a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff2d55, #ffcc00);
+  border: 2px solid #ff2d55;
+  color: #fff;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+  animation: vegas-glow-primary 2s ease-in-out infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+main .hero a.button.primary:any-link:hover,
+.hero strong > a:any-link:hover {
+  filter: brightness(1.15);
+  transform: translate(-2px, -2px) scale(1.05);
+  box-shadow: 0 0 24px #ffcc00, 0 0 50px #ff2d5580, 5px 5px 0 0 #ffcc00;
+  animation: none;
+  text-decoration: none;
+}
+
+main .hero a.button.primary:any-link:active,
+.hero strong > a:any-link:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 8px #ff2d55;
+  animation: none;
+}
+
+/* secondary button on hero — Vegas electric blue/pink neon (decorated + raw markup) */
+main .hero a.button.secondary:any-link,
+.hero em > a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-style: normal;
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 50%);
-  color: var(--background-color);
+  border: 2px solid #00e5ff;
+  color: #00e5ff;
+  text-shadow: 0 0 6px #00e5ff80;
+  animation: vegas-glow-secondary 2.5s ease-in-out infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
-main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+main .hero a.button.secondary:any-link:hover,
+.hero em > a:any-link:hover {
+  border-color: #ff2d55;
+  background: linear-gradient(135deg, #ff2d55, #9b00ff);
+  color: #fff;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+  transform: translate(-2px, -2px) scale(1.05);
+  box-shadow: 0 0 24px #ff2d55, 0 0 50px #9b00ff80, 5px 5px 0 0 #9b00ff;
+  animation: none;
+  text-decoration: none;
+}
+
+main .hero a.button.secondary:any-link:active,
+.hero em > a:any-link:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 8px #00e5ff;
+  animation: none;
 }
 
 @media (width < 768px) {

@@ -12,46 +12,41 @@ main > .hero-container {
   padding: 0;
 }
 
-/* ===== Base hero (Navy Federal inspired — deep navy with rounded bottom) ===== */
+/* ===== Base hero (Navy Federal billboard style — split image + content) ===== */
 
 .hero {
-  --nf-navy: #144881;
-  --nf-navy-dark: #0d3460;
+  --nf-navy: #0f3d70;
+  --nf-navy-deep: #0a2d52;
   --nf-orange: #ed780f;
   --nf-orange-hover: #d96a0a;
   --nf-light-blue: #cce7ff;
   --btn-shadow: none;
 
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: min(65vh, 400px);
-  padding: var(--gap-2xl) var(--gap-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 0;
+  padding: 0;
   overflow: hidden;
   color: #fff;
   background: var(--nf-navy);
 }
 
-/* Rounded bottom corners on the hero container */
-main > .hero-container .hero-wrapper {
-  border-radius: 0 0 20px 20px;
-  overflow: hidden;
-  background: var(--nf-navy, #144881);
-}
-
+/* Image half — fills its grid area completely */
 .hero picture {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
 }
 
 .hero img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  display: block;
   transition: transform 0.6s ease;
 }
 
@@ -59,23 +54,38 @@ main > .hero-container .hero-wrapper {
   transform: scale(1.03);
 }
 
-/* overlay gradient — navy blue tint for brand consistency */
+/* No overlay gradient — clean split like NF billboard */
 .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(135deg, rgb(20 72 129 / 85%) 0%, rgb(13 52 96 / 70%) 50%, rgb(20 72 129 / 55%) 100%);
-  pointer-events: none;
+  display: none;
 }
 
+/* Content half — navy background with padding */
 .hero > div {
   position: relative;
   z-index: 2;
-  max-width: var(--container-max-width);
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--nf-navy);
+  font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* Tag pill — NF heading with orange left bar */
+.hero .tag-pill {
+  font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.2;
+  color: var(--nf-navy-deep, #0a2d52);
+  background: #dce8f5;
+  padding: 16px 24px 16px 28px;
+  border-left: 5px solid var(--nf-orange, #ed780f);
+  border-radius: 0;
+  margin-bottom: var(--gap-lg);
+  text-shadow: none;
 }
 
 .hero h1,
@@ -85,28 +95,23 @@ main > .hero-container .hero-wrapper {
 .hero h5,
 .hero h6 {
   color: #fff;
-  margin-bottom: var(--gap-lg);
+  margin-bottom: var(--gap-md);
   text-shadow: none;
 }
 
 .hero h1 {
+  font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: normal;
-  max-width: 608px;
+  max-width: none;
 }
 
 .hero p:not(.tag-pill) {
-  color: var(--nf-light-blue, #cce7ff);
+  color: #fff;
   font-size: var(--body-font-size-m);
   line-height: 1.6;
-  max-width: 608px;
-  text-shadow: none;
-}
-
-/* eyebrow pill — uses .tag-pill utility, adds hero-specific overrides */
-.hero .tag-pill {
-  margin-bottom: var(--gap-md);
+  max-width: none;
   text-shadow: none;
 }
 
@@ -115,12 +120,12 @@ main > .hero-container .hero-wrapper {
   font-size: 20px;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--nf-light-blue, #cce7ff);
-  max-width: 608px;
+  color: #fff;
+  max-width: none;
   margin-bottom: var(--gap-lg);
 }
 
-/* button group — higher specificity to override .section.dark .button-group centering */
+/* button group */
 .section .hero .button-group {
   justify-content: flex-start;
 }
@@ -135,8 +140,8 @@ main > .hero-container .hero-wrapper {
 }
 
 /*
- * Hero buttons — Navy Federal style
- * Clean, corporate: orange primary, white-outline secondary
+ * Hero buttons — Navy Federal billboard style
+ * Orange primary with soft shadow, dotted underline link secondary
  */
 main .hero a.button:any-link {
   box-sizing: border-box;
@@ -144,7 +149,7 @@ main .hero a.button:any-link {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  padding: 13px 24px;
+  padding: 13px 20px;
   font-family: var(--body-font-family);
   font-size: 16px;
   font-weight: 600;
@@ -165,7 +170,7 @@ main .hero a.button:any-link:active {
   transform: translateY(0);
 }
 
-/* primary button — NF orange with soft shadow */
+/* primary — NF orange with soft shadow */
 main .hero a.button.primary:any-link {
   background: var(--nf-orange, #ed780f);
   border: none;
@@ -178,49 +183,58 @@ main .hero a.button.primary:any-link:hover {
   box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
 }
 
-/* secondary button — white outline, transparent bg */
+/* secondary — NF light blue dotted underline link style */
 main .hero a.button.secondary:any-link {
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 60%);
-  color: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: var(--nf-light-blue, #cce7ff);
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+  box-shadow: none;
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: #fff;
-  background: rgb(255 255 255 / 10%);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  color: #fff;
+  text-decoration-style: solid;
+  transform: none;
+  box-shadow: none;
+  background: transparent;
 }
 
+/* Mobile: image on top, content below (stacked) */
 @media (width < 768px) {
   .section .hero .button-group {
     flex-direction: column;
-    align-items: stretch;
-    gap: var(--gap-sm);
+    align-items: flex-start;
+    gap: var(--gap-md);
   }
 
   .hero .button-wrapper {
     margin-right: 0;
   }
-
-  main .hero a.button:any-link {
-    width: 100%;
-    text-align: center;
-  }
 }
 
+/* Desktop: side-by-side split — image left, content right */
 @media (width >= 768px) {
   .hero {
-    min-height: 65vh;
-    padding: var(--gap-3xl) var(--gap-xl);
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
   }
 
-  .hero p:not(.tag-pill) {
-    font-size: 20px;
+  .hero > div {
+    padding: 48px 40px;
   }
 
   .hero h1 {
     font-size: var(--heading-font-size-xxl);
-    letter-spacing: -1.12px;
+  }
+
+  .hero p:not(.tag-pill) {
+    font-size: 20px;
   }
 }
 

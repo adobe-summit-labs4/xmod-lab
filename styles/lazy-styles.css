@@ -2,6 +2,195 @@
 
 /* add global styles that can be loaded post LCP here */
 
+/* ===== Back to top button ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: var(--background-color);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease,
+    box-shadow 0.15s ease, filter 0.15s ease;
+  box-shadow: 3px 3px 0 0 var(--dark-color);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  filter: brightness(0.9);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--dark-color);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 0 var(--dark-color);
+}
+
+.back-to-top svg {
+  display: block;
+}
+
+@media (width < 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== Chat widget ===== */
+.chat-widget {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 90;
+}
+
+.chat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--dark-color);
+  border-radius: 50%;
+  background: var(--dark-color);
+  color: var(--background-color);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 0 var(--accent-color);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.chat-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--accent-color);
+}
+
+.chat-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 0 var(--accent-color);
+}
+
+.chat-btn.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 3px 3px 0 0 var(--dark-color);
+}
+
+.chat-btn svg {
+  display: block;
+}
+
+/* Chat panel */
+.chat-panel {
+  position: absolute;
+  bottom: 72px;
+  left: 0;
+  width: 320px;
+  border: 2px solid var(--dark-color);
+  border-radius: var(--card-border-radius);
+  background: var(--background-color);
+  box-shadow: 4px 4px 0 0 var(--dark-color);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.95);
+  transform-origin: bottom left;
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+}
+
+.chat-panel[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.chat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-md) var(--gap-lg);
+  background: var(--dark-color);
+  color: var(--background-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.chat-panel-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--background-color);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.chat-panel-close:hover {
+  background: rgb(255 255 255 / 15%);
+}
+
+.chat-panel-body {
+  padding: var(--gap-lg);
+}
+
+.chat-panel-body p {
+  margin: 0 0 var(--gap-sm);
+  font-size: var(--body-font-size-s);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.chat-panel-body p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-panel-body a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+@media (width < 768px) {
+  .chat-widget {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .chat-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .chat-panel {
+    width: calc(100vw - 40px);
+    max-width: 320px;
+  }
+}
+
 /* ===== Tabs section style ===== */
 
 /* --- Local design tokens --- */

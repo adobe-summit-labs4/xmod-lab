@@ -118,10 +118,26 @@ main > .hero-container {
 }
 
 /*
- * Hero buttons — must override the global reset (main a.button:any-link)
- * which strips padding, border-radius, box-shadow, font-size, etc.
- * Specificity of reset: 0,2,1 — we use main .hero a.button:any-link (0,3,1)
+ * Hero buttons — Vegas neon style
+ * Override the global reset (main a.button:any-link) 0,2,1
+ * We use main .hero a.button:any-link (0,3,1)
  */
+
+@keyframes hero-neon-pulse {
+  0%, 100% { box-shadow: 0 0 8px #ff2d95, 0 0 20px rgb(255 45 149 / 40%), 0 0 40px rgb(255 45 149 / 15%); }
+  50% { box-shadow: 0 0 12px #ff2d95, 0 0 30px rgb(255 45 149 / 60%), 0 0 60px rgb(255 45 149 / 25%); }
+}
+
+@keyframes hero-gold-pulse {
+  0%, 100% { box-shadow: 0 0 8px #ffd700, 0 0 20px rgb(255 215 0 / 40%), 0 0 40px rgb(255 215 0 / 15%); }
+  50% { box-shadow: 0 0 12px #ffd700, 0 0 30px rgb(255 215 0 / 60%), 0 0 60px rgb(255 215 0 / 25%); }
+}
+
+@keyframes hero-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 main .hero a.button:any-link {
   box-sizing: border-box;
   display: inline-flex;
@@ -137,43 +153,50 @@ main .hero a.button:any-link {
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 3px 3px 0 0 var(--btn-shadow, var(--dark-color));
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
 main .hero a.button:any-link:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 0 var(--btn-shadow, var(--dark-color));
+  transform: scale(1.08) translateY(-2px);
   text-decoration: none;
+  filter: brightness(1.15);
 }
 
 main .hero a.button:any-link:active {
-  transform: translateY(0);
-  box-shadow: 0 0 0 var(--btn-shadow, var(--dark-color));
+  transform: scale(0.97);
 }
 
-/* primary button on hero — accent bg, dark text */
+/* primary button on hero — hot pink neon glow with gold shimmer */
 main .hero a.button.primary:any-link {
-  background: var(--accent-color);
-  border: 2px solid var(--accent-color);
-  color: var(--dark-color);
+  background: linear-gradient(90deg, #ff2d95, #ff6ec7, #ffd700, #ff6ec7, #ff2d95);
+  background-size: 300% 100%;
+  border: 2px solid #ff2d95;
+  color: #fff;
+  text-shadow: 0 0 6px rgb(255 255 255 / 50%);
+  animation: hero-neon-pulse 2s ease-in-out infinite, hero-shimmer 3s linear infinite;
 }
 
 main .hero a.button.primary:any-link:hover {
-  filter: brightness(0.9);
+  border-color: #ffd700;
+  animation: hero-neon-pulse 1s ease-in-out infinite, hero-shimmer 1.5s linear infinite;
 }
 
-/* secondary button on hero — white outline, dark shadow */
+/* secondary button on hero — gold neon outline */
 main .hero a.button.secondary:any-link {
   background: transparent;
-  border: 2px solid rgb(255 255 255 / 50%);
-  color: var(--background-color);
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  text-shadow: 0 0 6px rgb(255 215 0 / 40%);
+  animation: hero-gold-pulse 2.5s ease-in-out infinite;
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+  background: linear-gradient(90deg, #ffd700, #ffec80, #ffd700);
+  background-size: 200% 100%;
+  border-color: #ffd700;
+  color: #0f1a14;
+  text-shadow: none;
+  animation: hero-gold-pulse 1s ease-in-out infinite, hero-shimmer 2s linear infinite;
 }
 
 @media (width < 768px) {

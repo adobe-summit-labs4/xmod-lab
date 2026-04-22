@@ -152,28 +152,91 @@ main .hero a.button:any-link:active {
   box-shadow: 0 0 0 var(--btn-shadow, var(--dark-color));
 }
 
-/* primary button on hero — accent bg, dark text */
+/* === Vegas-style animated buttons === */
+
+@keyframes vegas-neon-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 7px rgb(232 101 26 / 60%),
+      0 0 20px rgb(232 101 26 / 30%),
+      3px 3px 0 0 var(--dark-color);
+  }
+
+  50% {
+    box-shadow:
+      0 0 14px rgb(255 180 50 / 80%),
+      0 0 40px rgb(232 101 26 / 50%),
+      0 0 60px rgb(255 220 100 / 20%),
+      3px 3px 0 0 var(--dark-color);
+  }
+}
+
+@keyframes vegas-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes vegas-border-glow {
+  0%, 100% {
+    border-color: rgb(255 255 255 / 40%);
+    box-shadow:
+      0 0 5px rgb(255 255 255 / 20%),
+      3px 3px 0 0 var(--dark-color);
+  }
+
+  50% {
+    border-color: rgb(255 200 100 / 80%);
+    box-shadow:
+      0 0 12px rgb(255 200 100 / 40%),
+      0 0 30px rgb(232 101 26 / 20%),
+      3px 3px 0 0 var(--dark-color);
+  }
+}
+
+/* primary button on hero — Vegas neon glow with shimmer */
 main .hero a.button.primary:any-link {
-  background: var(--accent-color);
+  background:
+    linear-gradient(
+      110deg,
+      var(--accent-color) 0%,
+      var(--accent-color) 35%,
+      #fc3 50%,
+      var(--accent-color) 65%,
+      var(--accent-color) 100%
+    );
+  background-size: 200% 100%;
   border: 2px solid var(--accent-color);
   color: var(--dark-color);
+  animation: vegas-neon-pulse 2s ease-in-out infinite, vegas-shimmer 3s linear infinite;
 }
 
 main .hero a.button.primary:any-link:hover {
-  filter: brightness(0.9);
+  filter: brightness(1.15);
+  animation: vegas-shimmer 1.5s linear infinite;
+  box-shadow:
+    0 0 20px rgb(255 180 50 / 80%),
+    0 0 50px rgb(232 101 26 / 40%),
+    5px 5px 0 0 var(--dark-color);
 }
 
-/* secondary button on hero — white outline, dark shadow */
+/* secondary button on hero — Vegas border glow */
 main .hero a.button.secondary:any-link {
   background: transparent;
   border: 2px solid rgb(255 255 255 / 50%);
   color: var(--background-color);
+  animation: vegas-border-glow 2.5s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
-  background-color: var(--accent-color);
+  border-color: #fc3;
+  background: linear-gradient(135deg, var(--accent-color), #fc3);
   color: var(--dark-color);
+  animation: none;
+  box-shadow:
+    0 0 20px rgb(255 200 100 / 60%),
+    0 0 40px rgb(232 101 26 / 30%),
+    5px 5px 0 0 var(--dark-color);
 }
 
 @media (width < 768px) {

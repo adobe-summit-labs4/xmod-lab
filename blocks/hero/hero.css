@@ -152,28 +152,63 @@ main .hero a.button:any-link:active {
   box-shadow: 0 0 0 var(--btn-shadow, var(--dark-color));
 }
 
-/* primary button on hero — accent bg, dark text */
+/* === New York style animated buttons — taxi yellow, Broadway marquee === */
+
+@keyframes nyc-marquee {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes nyc-taxi-pulse {
+  0%, 100% { box-shadow: 0 0 6px rgb(255 204 0 / 40%), 3px 3px 0 0 #111; }
+  50% { box-shadow: 0 0 14px rgb(255 204 0 / 70%), 0 0 28px rgb(255 204 0 / 30%), 3px 3px 0 0 #111; }
+}
+
+@keyframes nyc-border-chase {
+  0% { background-position: 0 0, 100% 0, 0 100%, 0 0; }
+  100% { background-position: 200px 0, -200px 0, 0 -200px, 0 200px; }
+}
+
+/* primary button on hero — NYC taxi yellow with Broadway marquee sweep */
 main .hero a.button.primary:any-link {
-  background: var(--accent-color);
-  border: 2px solid var(--accent-color);
-  color: var(--dark-color);
+  background: linear-gradient(90deg, #ffcc00 0%, #fff 20%, #ffcc00 40%, #ffcc00 60%, #fff 80%, #ffcc00 100%);
+  background-size: 200% 100%;
+  border: 2px solid #ffcc00;
+  color: #111;
+  font-weight: 800;
+  text-transform: uppercase;
+  animation: nyc-taxi-pulse 1.8s ease-in-out infinite, nyc-marquee 4s linear infinite;
+  text-shadow: none;
 }
 
 main .hero a.button.primary:any-link:hover {
-  filter: brightness(0.9);
+  filter: brightness(1.1);
+  animation: nyc-marquee 2s linear infinite;
+  box-shadow: 0 0 20px rgb(255 204 0 / 80%), 0 0 40px rgb(255 204 0 / 40%), 5px 5px 0 0 #111;
 }
 
-/* secondary button on hero — white outline, dark shadow */
+/* secondary button on hero — animated chase-light border (Broadway marquee) */
 main .hero a.button.secondary:any-link {
-  background: transparent;
-  border: 2px solid rgb(255 255 255 / 50%);
-  color: var(--background-color);
+  background-color: transparent;
+  background-image:
+    repeating-linear-gradient(90deg, #ffcc00 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(90deg, #ffcc00 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(0deg, #ffcc00 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(0deg, #ffcc00 0 6px, transparent 6px 12px);
+  background-size: 200px 2px, 200px 2px, 2px 200px, 2px 200px;
+  background-position: 0 0, 100% 100%, 0 100%, 100% 0;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  border: none;
+  padding: 15px 34px 13px;
+  color: #ffcc00;
+  animation: nyc-border-chase 2.5s linear infinite;
 }
 
 main .hero a.button.secondary:any-link:hover {
-  border-color: var(--background-color);
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+  background-color: rgb(255 204 0 / 12%);
+  color: #fff;
+  animation: nyc-border-chase 1.2s linear infinite;
+  box-shadow: 0 0 16px rgb(255 204 0 / 35%), 5px 5px 0 0 #111;
 }
 
 @media (width < 768px) {

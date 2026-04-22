@@ -529,12 +529,13 @@ main > .section.dark *:focus-visible {
   outline-color: var(--background-color);
 }
 
-/* Accent: orange bg, dark text */
+/* Accent: white bg with navy top border */
 main > .section.accent {
-  background-color: var(--accent-color);
-  color: var(--dark-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-top: 4px solid var(--dark-color);
 
-  --btn-shadow: var(--background-color);
+  --btn-shadow: none;
 }
 
 main > .section.accent h1,
@@ -547,16 +548,16 @@ main > .section.accent h6 {
 }
 
 main > .section.accent p {
-  color: var(--dark-color);
+  color: var(--text-color-subtle);
 }
 
 main > .section.accent > div > p:not(.tag-pill) {
   font-size: 20px;
 }
 
-/* accent section: primary button — navy fill */
+/* accent section: primary button — NF orange */
 main > .section.accent a.button.primary {
-  background-color: var(--dark-color);
+  background-color: var(--accent-color);
   color: #fff;
 }
 

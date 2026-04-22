@@ -128,7 +128,7 @@
   margin: 0;
 }
 
-/* --- Question (summary) — flex layout with plus icon --- */
+/* --- Question (summary) — flex layout with plus/× icon --- */
 .faq-list details summary {
   position: relative;
   display: flex;
@@ -144,25 +144,32 @@
   letter-spacing: normal;
   line-height: 1.6;
   color: var(--dark-color);
-  transition: background-color 0.15s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .faq-list details summary::-webkit-details-marker {
   display: none;
 }
 
-/* Hover: warm background on question row */
-.faq-list details summary:hover {
-  background-color: var(--faq-hover-bg);
+/* Closed hover: accent fill, white text */
+.faq-list details:not([open]) summary:hover {
+  background-color: var(--faq-accent-color);
+  color: var(--background-color);
 }
 
-/* Open state: keep hover background on summary */
+/* Open state: accent fill on summary */
 .faq-list details[open] summary {
-  background-color: var(--faq-hover-bg);
+  background-color: var(--faq-accent-color);
+  color: var(--background-color);
   border-radius: 15px 15px 0 0;
 }
 
-/* Plus icon → rotates 45° to × when open */
+/* Open + hover: slightly darker accent */
+.faq-list details[open] summary:hover {
+  background-color: var(--link-hover-color, #c9530e);
+}
+
+/* Plus icon — default accent color */
 .faq-list details summary::after {
   content: "+";
   font-size: 20px;
@@ -170,11 +177,18 @@
   color: var(--faq-accent-color);
   margin-left: var(--gap-md, 16px);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.2s ease;
 }
 
+/* Icon turns white on hover (closed) */
+.faq-list details:not([open]) summary:hover::after {
+  color: var(--background-color);
+}
+
+/* Icon turns × and white when open */
 .faq-list details[open] summary::after {
-  transform: rotate(45deg);
+  content: "\00d7";
+  color: var(--background-color);
 }
 
 /* --- Answer body — smooth reveal --- */

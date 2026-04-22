@@ -67,7 +67,7 @@
   border-top: 1px solid var(--border-color-light);
 }
 
-/* style link as dark button */
+/* style link as animated button */
 .featured-article .featured-article-content p:last-child a:any-link {
   display: flex;
   align-items: center;
@@ -78,21 +78,61 @@
   letter-spacing: 0.98px;
   text-decoration: none;
   padding: var(--gap-xs) var(--gap-xl);
-  background-color: var(--dark-color);
-  color: var(--background-color);
+  color: #fff;
   border-radius: var(--button-border-radius);
-  box-shadow: 3px 3px 0 var(--accent-color);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(270deg, #e8651a, #ff2d95, #ffd700, #00e5ff, #e8651a);
+  background-size: 400% 100%;
+  animation: featured-btn-gradient 6s ease infinite;
+  box-shadow:
+    0 0 12px rgb(232 101 26 / 40%),
+    0 0 24px rgb(255 45 149 / 20%);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.featured-article .featured-article-content p:last-child a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgb(255 255 255 / 30%) 45%,
+    rgb(255 255 255 / 50%) 50%,
+    rgb(255 255 255 / 30%) 55%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: featured-btn-shine 3s ease-in-out infinite;
 }
 
 .featured-article .featured-article-content p:last-child a:hover {
-  transform: translateY(-2px);
-  box-shadow: 5px 5px 0 var(--accent-color);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow:
+    0 0 20px rgb(232 101 26 / 60%),
+    0 0 40px rgb(255 45 149 / 35%),
+    0 0 60px rgb(255 215 0 / 20%);
 }
 
 .featured-article .featured-article-content p:last-child a:active {
-  transform: translateY(0);
-  box-shadow: 0 0 0 var(--accent-color);
+  transform: translateY(0) scale(0.97);
+  box-shadow:
+    0 0 6px rgb(232 101 26 / 30%),
+    0 0 12px rgb(255 45 149 / 15%);
+}
+
+@keyframes featured-btn-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes featured-btn-shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 @media (width >= 768px) {
